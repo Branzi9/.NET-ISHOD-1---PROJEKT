@@ -1,0 +1,53 @@
+@page
+@model Todoer.Pages_Todos.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div style="background: linear-gradient(to bottom, #aca5a4, #535352); height: 100vh; padding: 20px;">
+
+<h1>KORISNICI</h1>
+
+<p>
+    <a asp-page="Create">Upiši korisnika</i></a>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Todo[0].Naslov)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Todo[0].IsCompleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Todo[0].dateOnly)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Todo) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naslov)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsCompleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateOnly)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Uredi</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Detalji</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Obriši</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
